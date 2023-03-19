@@ -15,8 +15,16 @@ const Drawer = createDrawerNavigator();
 
 function DrawerNavigator() {
   return (
-    <Drawer.Navigator>
-      <Drawer.Screen name="Categories" component={CategoriesScreen} />
+    <Drawer.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: "#b8c7de" },
+        headerTintColor: "black",
+        sceneContainerStyle: { backgroundColor: "#d5e5f2" },
+      }}
+    >
+      <Drawer.Screen name="Categories" component={CategoriesScreen}
+        options={{title: 'All Categories'}} 
+      />
       <Drawer.Screen name="Favorites" component={FavoritesScreen} />
     </Drawer.Navigator>
   );
@@ -37,10 +45,14 @@ export default function App() {
           <Stack.Screen
             name="Drawer"
             component={DrawerNavigator}
-            options={{ title: "All Categories" }}
+            options={{
+              headerShown: false,
+            }}
           />
           <Stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
-          <Stack.Screen name="MealDetail" component={MealDetailScreen} />
+          <Stack.Screen name="MealDetail" component={MealDetailScreen} 
+            options={{ title: 'About the Meal'}}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>
@@ -49,6 +61,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
 });
